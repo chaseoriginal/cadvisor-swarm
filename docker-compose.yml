@@ -1,0 +1,25 @@
+
+version: "3.8"
+
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    deploy:
+      mode: global          # ensure one per node
+      restart_policy:
+        condition: any
+    ports:
+      - target: 8080
+        published: 8080
+        mode: host          # binds directly to node IP
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitor-net
+
+networks:
+  monitor-net:
+    driver: overlay
