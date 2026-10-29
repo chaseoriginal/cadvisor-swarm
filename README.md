@@ -8,8 +8,8 @@ deployment and polls this repository for changes.
 | Portainer stack id | 19 |
 | Portainer host | ore-dock-110-7 |
 | Endpoint | - (id -) |
-| Swarm | 0vmdpsrq1qdy |
-| Live service | cadvisor-swarm_cadvisor |
+| Swarm | True |
+| Live service | svc:cadvisor-swarm_cadvisor |
 | Git repo | https://github.com/chaseoriginal/cadvisor-swarm |
 | Compose file | `docker-compose.yml` |
 | Auto-update poll | every 900s |
@@ -39,8 +39,8 @@ deployment and polls this repository for changes.
 ## Verifying a deployment
 
 ```bash
-docker service ls --filter name=cadvisor-swarm_cadvisor
-docker service inspect cadvisor-swarm_cadvisor --format '{{json .Spec.TaskTemplate.ContainerSpec.Mounts}}'
+docker service ls --filter name=svc:cadvisor-swarm_cadvisor
+docker service inspect svc:cadvisor-swarm_cadvisor --format '{{json .Spec.TaskTemplate.ContainerSpec.Mounts}}'
 ```
 
 A healthy stack shows `1/1` and the same volume names as before.
