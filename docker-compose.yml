@@ -1,6 +1,6 @@
 services:
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
+    image: v0.55.1
     deploy:
       mode: global
       restart_policy:
